@@ -5,13 +5,18 @@
     <parent>
         <artifactId>my-blog</artifactId>
         <groupId>com.zsj</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>blog-admin</artifactId>
 
     <dependencies>
+        <dependency>
+            <groupId>com.zsj</groupId>
+            <artifactId>blog-common</artifactId>
+            <version>1.0.0</version>
+        </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -33,7 +38,6 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>

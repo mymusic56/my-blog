@@ -4,7 +4,7 @@ spring:
       connection-init-sqls: set names utf8mb4
       driver-class-name: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://home.mytest.com:3306/test?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
+    url: jdbc:mysql://home.mytest.com:3306/myblog?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
     username: root
     password: 123456
 
@@ -21,3 +21,7 @@ spring:
   ####### redis缓存服务配置 #######
   session:
     store-type: redis
+logging:
+  level:
+    # 打印SQL
+    com.zsj.blog.common.persistence.mybatis.mapper: debug

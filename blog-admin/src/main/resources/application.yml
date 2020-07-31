@@ -9,4 +9,5 @@ spring:
 
 mybatis:
 #  config-location: classpath:mybatis/mybatis-config.xml
-  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.zsj.blog.common.persistence.mybatis.mapper
+  mapper-locations: classpath*:/mybatis/mapper/*.xml

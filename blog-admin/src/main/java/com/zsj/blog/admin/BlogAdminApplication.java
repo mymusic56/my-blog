@@ -8,11 +8,23 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
+import org.springframework.stereotype.Component;
+import tk.mybatis.spring.annotation.MapperScan;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {
+        "com.zsj.blog.common",
+//        "com.zsj.blog.common.business",
+//        "com.zsj.blog.common.framework",
+//        "com.zsj.blog.common.persistence",
+//        "com.zsj.blog.common.util"
+})
+@MapperScan(basePackages = {"com.zsj.blog.common.persistence.mybatis.mapper"})
 public class BlogAdminApplication implements ApplicationRunner {
     public static void main(String[] args) {
         SpringApplication.run(BlogAdminApplication.class, args);

@@ -1,6 +1,7 @@
 package com.zsj.blog.admin.mapper;
 
-import com.zsj.blog.admin.entity.UserEntity;
+import com.zsj.blog.common.persistence.mybatis.entity.UserEntity;
+import com.zsj.blog.common.persistence.mybatis.mapper.UserMapper;
 import com.zsj.blog.common.util.DateUtil;
 import org.junit.Assert;
 import org.junit.Test;

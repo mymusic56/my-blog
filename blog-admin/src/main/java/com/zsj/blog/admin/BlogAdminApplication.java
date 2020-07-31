@@ -18,6 +18,7 @@ import java.util.List;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {
+        "com.zsj.blog.admin",
         "com.zsj.blog.common",
 //        "com.zsj.blog.common.business",
 //        "com.zsj.blog.common.framework",

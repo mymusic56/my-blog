@@ -2,7 +2,9 @@ package com.zsj.blog.admin.controller;
 
 import com.zsj.blog.common.plugin.kaptcha.Captcha;
 import com.zsj.blog.common.plugin.kaptcha.GifCaptcha;
+import com.zsj.blog.common.util.SessionUtil;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.catalina.manager.util.SessionUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -30,7 +32,6 @@ public class KaptchaController {
         try {
             captcha.out(response.getOutputStream());
             String captchaString = captcha.text();
-            //TODO captcha存入session
             log.info(captchaString);
         } catch (IOException e) {
             e.printStackTrace();

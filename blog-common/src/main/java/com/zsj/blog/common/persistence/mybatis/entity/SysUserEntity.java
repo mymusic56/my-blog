@@ -36,4 +36,5 @@ public class SysUserEntity extends AbstractDO {
     private Integer loginCount;
     private String remark;
     private Integer status;
+    private String salt;
 }

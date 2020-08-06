@@ -1,6 +1,8 @@
 package com.zsj.blog.common.plugin.kaptcha;
 
 
+import com.zsj.blog.common.util.SessionUtil;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -51,6 +53,7 @@ public class GifCaptcha extends Captcha {
                 gifEncoder.addFrame(frame);
                 frame.flush();
             }
+            SessionUtil.setKaptcha(this.text().toLowerCase());
             gifEncoder.finish();
 
         } finally {

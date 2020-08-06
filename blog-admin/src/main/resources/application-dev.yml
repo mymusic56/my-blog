@@ -25,3 +25,8 @@ logging:
   level:
     # 打印SQL
     com.zsj.blog.common.persistence.mybatis.mapper: debug
+
+# 自定义配置
+custom-properties:
+  admin:
+    enableKaptcha: true

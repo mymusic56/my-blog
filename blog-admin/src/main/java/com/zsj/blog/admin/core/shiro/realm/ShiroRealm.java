@@ -19,6 +19,7 @@ import javax.annotation.Resource;
 public class ShiroRealm extends AuthorizingRealm {
     @Resource
     private SysUserService userService;
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         System.out.println("权限配置-->ShiroRealm.doGetAuthorizationInfo()");
@@ -36,28 +37,31 @@ public class ShiroRealm extends AuthorizingRealm {
             throws AuthenticationException {
         System.out.println("----->>ShiroRealm.doGetAuthenticationInfo()");
         //获取用户的输入的账号.
-        String username = (String)token.getPrincipal();
+        String username = (String) token.getPrincipal();
         System.out.println("----->>username=" + username);
         System.out.println("----->>getCredentials=" + token.getCredentials());
         //通过username从数据库中查找 User对象，如果找到，没找到.
         //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
-        SysUserEntity userInfo = null;
-        if(userInfo == null){
-            System.out.println("----->>getName=【"+username + "】不存在");
+        UserBO userBO = userService.getByUsername(username);
+        SysUserEntity userInfo = userBO != null ? userBO.getSysUser() : null;
+        if (userInfo == null) {
+            System.out.println("----->>getName=【" + username + "】不存在");
             return null;
         }
-        System.out.println("----->>getName="+userInfo.getNickname());
+        System.out.println("----->>getName=" + userInfo.getNickname());
         //明文认证
-        SimpleAuthenticationInfo authenticationInfo1 = new SimpleAuthenticationInfo(
-                userInfo, //用户名
-                userInfo.getPassword(), //密码
-                getName()  //realm name
-        );
+//        SimpleAuthenticationInfo authenticationInfo1 = new SimpleAuthenticationInfo(
+//                userInfo, //用户名
+//                userInfo.getPassword(), //密码
+//                getName()  //realm name
+//        );
+        System.out.println("getName() = " + getName());
+        System.out.println("salt:" + userInfo.getSalt() + ",pwd:" + userInfo.getPassword());
         //hash加密认证
         SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
                 userInfo, //用户名
                 userInfo.getPassword(), //密码
-                ByteSource.Util.bytes("salt"),//salt=username+salt
+                ByteSource.Util.bytes(userInfo.getUsername() + userInfo.getSalt()),//salt=username+salt
                 getName()  //realm name
         );
         return authenticationInfo;

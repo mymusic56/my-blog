@@ -19,11 +19,7 @@ import java.util.List;
 @SpringBootApplication
 @ComponentScan(basePackages = {
         "com.zsj.blog.admin",
-        "com.zsj.blog.common",
-//        "com.zsj.blog.common.business",
-//        "com.zsj.blog.common.framework",
-//        "com.zsj.blog.common.persistence",
-//        "com.zsj.blog.common.util"
+        "com.zsj.blog.common"
 })
 @MapperScan(basePackages = {"com.zsj.blog.common.persistence.mybatis.mapper"})
 public class BlogAdminApplication implements ApplicationRunner {

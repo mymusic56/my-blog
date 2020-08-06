@@ -265,4 +265,7 @@ public class UserBO extends AbstractBO {
         this.sysUserEntity.setUpdateTime(updateTime);
     }
 
+    public String getSalt(){
+        return this.sysUserEntity.getUsername() + this.sysUserEntity.getSalt();
+    }
 }

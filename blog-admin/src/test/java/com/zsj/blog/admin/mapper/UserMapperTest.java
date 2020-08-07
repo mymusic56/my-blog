@@ -20,7 +20,7 @@ public class UserMapperTest {
     private UserMapper userMapper;
 
     @Test
-    public void insert(){
+    public void insert() {
         UserEntity userEntity = new UserEntity();
         userEntity.setUserName("wangwu");
         userEntity.setNickName("王五");
@@ -30,13 +30,19 @@ public class UserMapperTest {
         userEntity.setRole_id(1);
         userEntity.setCreated_at(DateUtil.getTimestamp());
         userMapper.insert(userEntity);
-        System.out.println("新插入用户ID："+userEntity.getId());
+        System.out.println("新插入用户ID：" + userEntity.getId());
     }
 
     @Test
-    public void getAll(){
+    public void getByUsername() {
+        UserEntity userEntity = userMapper.getByUsername("zhangsan");
+        System.out.println("userEntity.toString() = " + userEntity.toString());
+    }
+
+    @Test
+    public void getAll() {
         List<UserEntity> userList = userMapper.getAll();
-        for (UserEntity u: userList) {
+        for (UserEntity u : userList) {
             System.out.println(u.toString());
         }
     }

@@ -40,5 +40,11 @@ public class SysUserMapperTest {
             System.out.println("查询失败");
         }
     }
+    
+    @Test
+    public void testFindByUsername(){
+        SysUserEntity userEntity = userMapper.findByUsernameV2("admin");
+        System.out.println("userEntity.getUsername() = " + userEntity.getUsername());
+    }
 
 }

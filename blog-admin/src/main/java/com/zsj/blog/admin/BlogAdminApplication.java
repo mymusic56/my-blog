@@ -31,8 +31,8 @@ public class BlogAdminApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        generateArtifacts();
-        //生成的数据好像有问题
+//        generateArtifacts();
+        //不能指定关联关系
     }
 
     /**

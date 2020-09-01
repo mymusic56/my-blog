@@ -2,8 +2,10 @@ package com.zsj.blog.admin.mapper;
 
 import com.zsj.blog.common.business.bo.UserBO;
 import com.zsj.blog.common.business.service.SysUserService;
+import com.zsj.blog.common.persistence.mybatis.entity.SysRoleEntity;
 import com.zsj.blog.common.persistence.mybatis.entity.SysUserEntity;
 import com.zsj.blog.common.persistence.mybatis.mapper.SysUserMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@Slf4j
 public class SysUserMapperTest {
 
     @Autowired
@@ -40,11 +43,24 @@ public class SysUserMapperTest {
             System.out.println("查询失败");
         }
     }
-    
+
     @Test
-    public void testFindByUsername(){
+    public void testFindByUsername() {
         SysUserEntity userEntity = userMapper.findByUsernameV2("admin");
         System.out.println("userEntity.getUsername() = " + userEntity.getUsername());
+    }
+
+    @Test
+    public void testFindUserWithRole() {
+        SysUserEntity userEntity = userMapper.findUserWithRole(2L);
+        userEntity.getRoleList().forEach((sysRoleEntity) -> {
+            log.info("角色ID=" + sysRoleEntity.getId() + ",角色名称=" + sysRoleEntity.getName());
+        });
+    }
+
+    @Test
+    public void testTransaction() {
+
     }
 
 }

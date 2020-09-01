@@ -5,7 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
@@ -37,4 +39,6 @@ public class SysUserEntity extends AbstractDO {
     private String remark;
     private Integer status;
     private String salt;
+    @Transient
+    private List<SysRoleEntity> roleList;
 }

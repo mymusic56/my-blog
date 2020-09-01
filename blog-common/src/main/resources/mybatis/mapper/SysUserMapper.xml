@@ -31,6 +31,13 @@
         <result property="remark" jdbcType="VARCHAR" column="remark"/>
         <result property="createTime" jdbcType="TIMESTAMP" column="create_time"/>
         <result property="updateTime" jdbcType="TIMESTAMP" column="update_time"/>
+        <collection property="roleList" column="role_id" javaType="ArrayList"
+                    ofType="com.zsj.blog.common.persistence.mybatis.entity.SysRoleEntity">
+            <result column="role_id" property="id" jdbcType="VARCHAR"/>
+            <result column="role_name" property="name" jdbcType="VARCHAR"/>
+            <result column="role_description" property="description" jdbcType="VARCHAR"/>
+            <result column="role_available" property="available" jdbcType="BOOLEAN"/>
+        </collection>
     </resultMap>
     <select id="selectByPrimaryKey" parameterType="com.zsj.blog.common.business.vo.UserVO" resultMap="rm" >
         SELECT * FROM sys_user s WHERE id=#{id}
@@ -100,6 +107,18 @@
 		WHERE
 			sur.role_id = #{roleId}
 	</select>
+    <select id="findUserWithRole" resultMap="rm">
+        select s.id,
+			s.username,
+			s.nickname,
+			r.id role_id,
+			r.name role_name,
+			r.description role_description
+		FROM sys_user s
+		LEFT JOIN sys_user_role ur ON(ur.user_id = s.id)
+		LEFT JOIN sys_role r ON(r.id = ur.role_id)
+		WHERE s.id = #{userId}
+    </select>
 
 </mapper>
 

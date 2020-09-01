@@ -36,6 +36,12 @@ public class SysUserServiceImpl implements SysUserService {
         return userEntity == null ? null : new UserBO(userEntity);
     }
 
+    @Override
+    public UserBO findUserWithRole(Long userId) {
+        SysUserEntity userEntity = sysUserMapper.findUserWithRole(userId);
+        return userEntity == null ? null : new UserBO(userEntity);
+    }
+
 
     @Override
     public UserBO insert(UserBO entity) {

@@ -13,6 +13,8 @@ public interface SysUserMapper {
 
     List<SysUserEntity> listByRoleId(Long roleId);
 
+    SysUserEntity findUserWithRole(Long userId);
+
     SysUserEntity selectByPrimaryKey(Long id);
 
     SysUserEntity findByUsername(String username);

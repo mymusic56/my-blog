@@ -36,9 +36,6 @@ public class PassportController {
     @Autowired
     private AdminProperty config;
 
-    @Autowired
-    private SysConfigMapper sysConfigMapper;
-
     @Resource
     private SysUserService userService;
 
@@ -49,7 +46,7 @@ public class PassportController {
         if (subject.isAuthenticated()) {
             return ResultUtil.redirect("/");
         }
-        SysConfigEntity sysConfigEntity = sysConfigMapper.getByConfigKey("siteName");
+        log.info("/passport/login()");
         mode.addAttribute("enableKaptcha", config.isEnableKaptcha());
         return ResultUtil.view("/login");
     }

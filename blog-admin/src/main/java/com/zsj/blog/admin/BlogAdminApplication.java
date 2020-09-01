@@ -10,6 +10,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.ComponentScans;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
 import tk.mybatis.spring.annotation.MapperScan;
 
@@ -22,6 +23,7 @@ import java.util.List;
         "com.zsj.blog.common"
 })
 @MapperScan(basePackages = {"com.zsj.blog.common.persistence.mybatis.mapper"})
+@EnableAspectJAutoProxy
 public class BlogAdminApplication implements ApplicationRunner {
     public static void main(String[] args) {
         SpringApplication.run(BlogAdminApplication.class, args);
@@ -29,7 +31,7 @@ public class BlogAdminApplication implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-//        generateArtifacts();
+        generateArtifacts();
         //生成的数据好像有问题
     }
 

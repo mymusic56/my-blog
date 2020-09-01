@@ -17,4 +17,6 @@ public interface SysUserService extends AbstractService<UserBO, Long> {
     PageInfo<UserBO> findPageBreakByCondition(UserVO vo);
 
     UserBO getByUsername(String username);
+
+    UserBO findUserWithRole(Long userId);
 }
